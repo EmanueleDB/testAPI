@@ -5,6 +5,7 @@
     "helmet": "^5.1.0",
     "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
     "prettier": "^2.7.1"
   }
 }
