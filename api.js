@@ -3,6 +3,7 @@ const Router = require("./modules/users/usersRoutes")
 const mongoose = require("mongoose")
 const helmet = require("helmet")
 const bodyParser = require ("body-parser")
+require('dotenv').config()
 
 const app = express()
 app.use(helmet())
@@ -11,10 +12,12 @@ app.use(bodyParser.json())
 app.use(Router)
 
 const username = encodeURIComponent(process.env.MONGO_USER)
-const password = encodeURIComponent("N4eWVl7Ey7{#VU@5iwyI")
+const password = encodeURIComponent(process.env.MONGO_PASSWORD)
 const clusterName = encodeURIComponent(process.env.MONGO_URL)
 
-let uri = `mongodb+srv://EmanueleDB:${password}@freecluster.pnc0lfe.mongodb.net/?retryWrites=true&w=majority`
+console.log(process.env.MONGO_USER)
+
+let uri = `mongodb+srv://${username}:${password}@${clusterName}.mongodb.net/?retryWrites=true&w=majority`
 
 const options = {
   useNewUrlParser: true,
