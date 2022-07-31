@@ -11,6 +11,7 @@ export const addUser = async (req, res) => {
 }
 export const getUsers = async (req, res) => {
   const users = await User.find({})
+    .select("firstName lastName email age hasPets -_id")
   try {
     return res.status(200).send(users)
   } catch (err) {
@@ -18,9 +19,9 @@ export const getUsers = async (req, res) => {
   }
 }
 export const deleteUser = async (req, res) => {
-  const users = await User.deleteOne({email: req.query.email})
+  const users = await User.deleteOne({ email: req.query.email })
   try {
-    return res.status(200).send('User deleted')
+    return res.status(200).send("User deleted")
   } catch (err) {
     res.status(500).send(err)
   }
