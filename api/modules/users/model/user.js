@@ -5,7 +5,7 @@ const user = new mongoose.Schema({
   lastName: { type: String, required: true },
   email: { type: String, required: true },
   age: { type: Number, required: true },
-  hasPets: { type: Boolean, required: true },
+  hasPets: { type: Boolean },
   date: { type: Date, default: Date.now },
 })
 
