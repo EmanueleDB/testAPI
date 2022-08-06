@@ -26,3 +26,12 @@ export const deleteUser = async (req, res) => {
     res.status(500).send(err)
   }
 }
+export const editUser = async (req, res) => {
+  const updatedUser = req.body
+  const user = await User.updateOne({ email: req.body.email }, updatedUser)
+  try {
+    return res.status(200).send(user)
+  } catch (err) {
+    res.status(500).send(err)
+  }
+}
